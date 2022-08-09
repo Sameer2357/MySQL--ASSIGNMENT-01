@@ -74,16 +74,24 @@ VALUES
 -- 5 QUESTIONS of Assignment --
 
 SELECT * FROM assignment ;
+--1
+SELECT COUNT(*) FROM  salespeople WHERE Sname LIKE 'A%' or Sname LIKE 'a%' ;
 
-SELECT * FROM  salespeople WHERE sname LIKE 'A%';
+--2
 
-SELECT * FROM orders WHERE Amt>1000;
+SELECT sp.sname, a.amt FROM  orders as a inner join salespeople as sp on a.snum = sp.snum WHERE  a.amt > 2000; 
+SELECT * FROM orders WHERE Amt>2000;
+
+--3
 
 SELECT * FROM salespeople WHERE  City ='Newyork';
 
-SELECT * FROM salespeople WHERE  City ='London'or City='paris' ;
+--4
 
-SELECT COUNT(odate) "TOTAL ORDERS", Odate FROM orders GROUP BY Odate ORDER BY "TOTAL ORDERS";
+SELECT City,COUNT(*) FROM salespeople WHERE  City ='London'or City='paris' ;
+
+--5
 
 
+SELECT sp.Sname, count(*) as number_of_orders , oo.Odate  FROM sales_people as sp inner join orders as oo on oo.Snum = sp.Snum group by sp.Sname, oo.Odate;
 
